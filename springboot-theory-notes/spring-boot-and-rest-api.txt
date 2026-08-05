@@ -1,0 +1,209 @@
+=======================================================================
+                   SPRING BOOT & REST API CORE NOTES
+=======================================================================
+
+> Database Note: If the database is not created yet, append this statement 
+  to your database connection URL: 
+  `Students?createDatabaseIfNotExist=true`
+
+
+1. COMMON SPRING BOOT DEPENDENCIES
+-----------------------------------------------------------------------
+1. Spring Web          : Used for building web apps and RESTful APIs using 
+                         Spring MVC with embedded Apache Tomcat.
+2. DevTools            : Provides fast application restarts, LiveReload, and 
+                         configurations for a smooth developer experience.
+3. Spring Data JPA     : Provides easy data access and ORM persistence using 
+                         Hibernate underneath.
+4. Spring Boot Actuator: Offers production-ready features like health checks, 
+                         metrics, and monitoring endpoints.
+5. MySQL Driver        : JDBC driver to connect Spring Boot to a MySQL database.
+
+
+2. WHAT IS SPRING BOOT?
+-----------------------------------------------------------------------
+* Definition: Spring Boot is an open-source framework built on top of the 
+  Spring Framework for Java developers.
+* History: It was developed by Pivotal Software (now part of VMware) and was 
+  first released in 2014.
+* Meaning of "Boot": The term "+Boot" (fast) refers to the concept of rapidly 
+  initiating a Spring application by handling all essential setups and 
+  configurations automatically.
+* Key Advantage: Spring Boot makes building Spring applications much easier and 
+  significantly faster.
+
+* Common Uses of Spring Boot:
+  - Building Web Applications
+  - Creating RESTful APIs
+  - Microservices architecture
+  - Batch processing
+  - Seamless integration with technologies like React, Angular, ORM, etc.
+  - Testing enterprise applications
+
+
+3. CORE PRINCIPLES OF SPRING BOOT
+-----------------------------------------------------------------------
+* Opinionated Defaults:
+  - Pre-configured defaults for Maven/Gradle build tools, required dependencies, 
+    standard project folder structures, and `application.properties` settings.
+
+* Convention over Configuration:
+  - Uses standard stereotype annotations to automatically configure layers 
+    without needing manual XML configurations:
+    - @Controller : Handles incoming request functionality.
+    - @Service    : Holds the business logic.
+    - @Repository : DAO layer (manages database connection details and queries).
+    - @Entity     : Maps data model fields (e.g., fields received from frontend).
+
+* Auto-Configuration:
+  - Automatically configures your application based on jar dependencies added to 
+  - eliminates the need to create XML files manually.
+
+* Embedded Server:
+  - Comes with an automatically integrated embedded web server (e.g., Tomcat) 
+    so you don't need to deploy WAR files to external servers.
+
+
+4. HTTP REQUEST & HTTP RESPONSE STRUCTURE
+-----------------------------------------------------------------------
+
+HTTP Request (Divided into 2 Parts):
+1. Header:
+   - URI (Uniform Resource Identifier)
+   - IP address
+   - HTTP Method (GET, POST, PUT, DELETE, etc.)
+   - ContentType (Image, Audio, Text, Video, JSON, PDF)
+   - Date & Time
+   - Auth Token
+2. Body:
+   - Payload / Data (JSON, Text, etc.)
+
+HTTP Response (Divided into 2 Parts):
+1. Header:
+   - URI
+   - IP address
+   - HTTP Method (GET, POST, PUT, DELETE)
+   - ContentType (Image, Audio, Text, Video, JSON, PDF)
+   - Date & Time
+   - Auth Token
+   - Status Codes:
+     - 2xx => Success / OK (200-299)
+     - 3xx => Redirection (300-399)
+     - 4xx => Client-Side Error (400-499)
+     - 5xx => Server-Side Error (500-599)
+2. Body:
+   - Returned Data (JSON, Text, etc.)
+
+
+5. REST VS. SOAP
+-----------------------------------------------------------------------
+
+
+REST (Representational State Transfer):
+- Typically works on top of the HTTP protocol.
+- Can be accessed from any device that has an internet connection.
+- REST is lightweight compared to SOAP.
+- Offers flexibility in formats (XML or JSON), with JSON preferred.
+- JSON processing is lighter and requires less bandwidth/data overhead.
+- Data is primarily sent in JSON format.
+
+SOAP (Simple Object Access Protocol):
+- SOAP services primarily output XML data.
+- Accessing and processing XML data requires higher device configuration.
+- XML processing is heavier and consumes more bandwidth/data.
+- Data is strictly sent in XML format.
+
+
+6. JSON OBJECT & ARRAY OF OBJECTS
+-----------------------------------------------------------------------
+* JSON (JavaScript Object Notation): Stores data in key-value pairs.
+
+* JSON Object Example:
+  {
+    "id": "120",
+    "fname": "harshad",
+    "lname": "tttt"
+  }
+
+* Corresponding Java Entity Mapping:
+  @Entity
+  class Employee {
+      int id;
+      String fname;
+      String lname;
+      Date date;
+  }
+
+  Represented in JSON:
+  {
+    "id": 9,
+    "fname": "gfgf",
+    "lname": "",
+    "date": "...."
+  }
+
+* Array of Objects Example:
+  [
+    {
+      "id": "9",
+      "fname": "Sumit",
+      "lname": "...."
+    },
+    {
+      "id": "10",
+      "fname": "Sumit",
+      "lname": "...."
+    },
+    {
+      "id": "6",
+      "fname": "Sumit",
+      "lname": "...."
+    }
+  ]
+
+* POSTMAN: A widely used API testing tool used to send requests and inspect 
+  HTTP responses.
+
+
+7. @SpringBootApplication ANNOTATION
+-----------------------------------------------------------------------
+The `@SpringBootApplication` annotation is a composite annotation that combines 
+three core Spring annotations:
+1. @Configuration : Enables Java-based configuration for beans.
+2. @EnableAutoConfiguration : Enables Spring Boot's auto-configuration mechanism.
+3. @ComponentScan : Tells Spring to scan the current package and sub-packages 
+   for `@Component`, `@Service`, `@Repository`, and `@Controller` classes.
+
+
+=======================================================================
+                     SUMMARY & INTERVIEW QUESTIONS
+=======================================================================
+
+* Q1: Explain Http Request & Http Response.
+  Ans: An HTTP Request consists of a Header (URI, IP, Method, ContentType, 
+  Auth token) and an optional Body (Data like JSON). An HTTP Response consists 
+  of a Header (Status Code, ContentType, URI) and a Body containing the returned 
+  data.
+
+* Q2: Difference between REST & SOAP.
+  Ans: REST is lightweight, flexible, typically uses JSON, and runs over HTTP. 
+  SOAP is a strict protocol that relies exclusively on XML, making it heavier in 
+  terms of bandwidth and device processing requirements.
+
+* Q3: How to create a JSON Object?
+  Ans: Enclose key-value pairs inside curly braces `{}` using double quotes for 
+  keys (e.g., `{"id": 1, "name": "John"}`).
+
+* Q4: How to create an array of objects?
+  Ans: Wrap multiple JSON objects inside square brackets `[]` separated by 
+  commas (e.g., `[{"id": 1}, {"id": 2}]`).
+
+* Q5: What is Spring Boot?
+  Ans: Spring Boot is an open-source Java framework built on top of the Spring 
+  Framework that makes creating standalone, production-ready applications fast 
+  and easy with embedded servers and auto-configurations.
+
+* Q6: What are the core principles of Spring Boot?
+  Ans: Opinionated Defaults, Convention over Configuration, Auto-Configuration, 
+  and Embedded Web Servers.
+=======================================================================
