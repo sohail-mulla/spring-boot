@@ -1,7 +1,7 @@
 =======================================================================
                    SPRING BOOT & REST API CORE NOTES
 =======================================================================
-
+ 
 > Database Note: If the database is not created yet, append this statement 
   to your database connection URL: 
   `Students?createDatabaseIfNotExist=true`
