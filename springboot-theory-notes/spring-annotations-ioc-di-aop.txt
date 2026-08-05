@@ -3,7 +3,7 @@
 =======================================================================
 
 > Note : (by default Spring follow singleton design pattern).
-IOC, DI & AOP
+
 
 1. SPRING (IOC) ANNOTATIONS
 -----------------------------------------------------------------------
