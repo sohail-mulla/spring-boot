@@ -1,0 +1,23 @@
+# Eclipse workspace metadata - never track this
+.metadata/
+
+# Build output for all projects
+**/target/
+**/bin/
+
+# Eclipse project files
+**/.settings/
+**/.classpath
+**/.project
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / local configs
+**/application-local.properties
+**/application-secrets.yml
+**/.env
