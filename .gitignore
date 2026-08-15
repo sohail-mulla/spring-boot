@@ -23,9 +23,27 @@
 hs_err_pid*
 replay_pid*
 
+# Build output for all projects
+**/target/
+**/build/
+**/bin/
 
-target/
-build/
+# Eclipse workspace metadata - never track this
+.metadata/
+
+# Eclipse project files
+**/.settings/
+**/.classpath
+**/.project
+
+# IntelliJ / VS Code (kept in case anyone on the team uses them)
 .idea/
 *.iml
 .vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / local configs
+**/application-local.properties
