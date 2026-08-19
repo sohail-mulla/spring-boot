@@ -46,7 +46,8 @@ public class EmployeeController {
 		return service.fetchAllData();
 	}
 
-	@GetMapping("/getSingleData")
+	@GetMapping("/getSingleData") // Optional Class --> if the ID doesnt exists it will show null and not throw an
+									// error
 	public Optional<Employee> getSingleData(@RequestParam int id) {
 
 		return service.fetchSingleData(id);
